@@ -1,5 +1,5 @@
 # ResepPedia - Aplikasi Resep Masakan
-Aplikasi Resep Masakan dengan API [Masakapahariini Api](https://github.com/tomorisakura/unofficial-masakapahariini-api)
+Aplikasi Resep Masakan
 
 **Team**
 1. [iqbalhh101](https://github.com/iqbalhh101)
