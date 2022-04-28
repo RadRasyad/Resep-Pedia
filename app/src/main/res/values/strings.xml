@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Resep Pedia</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_cook">Cook</string>
+    <string name="title_wishlist">Wishlist</string>
+    <string name="placeholder_nama_resep">Nama Resep</string>
 </resources>

@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.31" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_resepedia_title.xml" value="0.31" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_cook_selector.xml" value="0.31" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_heart_selector.xml" value="0.31" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_home_selector.xml" value="0.31" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/fragment_home.xml" value="0.28730226592560926" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/recipe_row.xml" value="0.28730226592560926" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/menu/bottom_nav_menu.xml" value="0.28730226592560926" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

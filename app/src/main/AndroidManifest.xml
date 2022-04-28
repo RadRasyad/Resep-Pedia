@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResepPedia">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_main" />
+        <activity
+            android:name=".ui.splashscreen.SplashScreen"
+            android:theme="@style/Theme.ResepPedia.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
