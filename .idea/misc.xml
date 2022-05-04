@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable-v24/ic_broken_image_black.xml" value="0.31" />
         <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.31" />
+        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_error.xml" value="0.31" />
         <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_resepedia_title.xml" value="0.31" />
         <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_cook_selector.xml" value="0.31" />
         <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_heart_selector.xml" value="0.31" />
