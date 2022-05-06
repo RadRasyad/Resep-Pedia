@@ -1,4 +1,4 @@
-package com.rpl.reseppedia.model.local.entity;
+package com.rpl.reseppedia.source.local.entity;
 
 
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ public class Recipe {
     private String porsi;
     private String kesulitan;
     private String deksripsi;
+    private String foto;
     private ArrayList<String> bahan;
     private ArrayList<String> caraMasak;
 

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.rpl.reseppedia.databinding.ActivitySplashScreenBinding;
-import com.rpl.reseppedia.ui.MainActivity;
+import com.rpl.reseppedia.ui.main.MainActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

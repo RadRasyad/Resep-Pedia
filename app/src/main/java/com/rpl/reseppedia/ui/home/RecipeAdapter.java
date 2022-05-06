@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.RecipeRowBinding;
-import com.rpl.reseppedia.model.remote.response.RecipeResponse;
+import com.rpl.reseppedia.source.remote.response.RecipeResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

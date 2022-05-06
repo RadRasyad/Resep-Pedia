@@ -1,8 +1,7 @@
-package com.rpl.reseppedia.ui;
+package com.rpl.reseppedia.ui.main;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.ActivityMainBinding;
 

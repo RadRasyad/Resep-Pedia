@@ -1,4 +1,4 @@
-package com.rpl.reseppedia.model.remote.response;
+package com.rpl.reseppedia.source.remote.response;
 
 
 import java.util.ArrayList;
@@ -13,6 +13,9 @@ public class RecipeResponse {
     private String porsi;
     private String kesulitan;
     private String deksripsi;
+    private String foto;
+    private ArrayList<String> bahan;
+    private ArrayList<String> caraMasak;
 
     public String getFoto() {
         return foto;
@@ -21,8 +24,6 @@ public class RecipeResponse {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-
-    private String foto;
 
     public String getId() {
         return id;
@@ -104,6 +105,4 @@ public class RecipeResponse {
         this.caraMasak = caraMasak;
     }
 
-    private ArrayList<String> bahan;
-    private ArrayList<String> caraMasak;
 }
