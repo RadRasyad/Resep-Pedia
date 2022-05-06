@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel;
 
 public class HomeViewModel extends ViewModel {
 
+    //buat coba2 firebase disini dulu
+
     private final MutableLiveData<String> mText;
 
     public HomeViewModel() {
