@@ -6,24 +6,17 @@ import java.util.ArrayList;
 public class RecipeResponse {
 
     private String id;
-    private String name;
+    private String nama;
     private String penulis;
-    private String dirilis;
+    private String ditulis;
     private String waktu;
     private String porsi;
     private String kesulitan;
-    private String deksripsi;
+    private String kategori;
+    private String deskripsi;
     private String foto;
     private ArrayList<String> bahan;
-    private ArrayList<String> caraMasak;
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
+    private ArrayList<String> cara_masak;
 
     public String getId() {
         return id;
@@ -33,12 +26,12 @@ public class RecipeResponse {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNama() {
+        return nama;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getPenulis() {
@@ -49,12 +42,12 @@ public class RecipeResponse {
         this.penulis = penulis;
     }
 
-    public String getDirilis() {
-        return dirilis;
+    public String getDitulis() {
+        return ditulis;
     }
 
-    public void setDirilis(String dirilis) {
-        this.dirilis = dirilis;
+    public void setDitulis(String ditulis) {
+        this.ditulis = ditulis;
     }
 
     public String getWaktu() {
@@ -81,12 +74,28 @@ public class RecipeResponse {
         this.kesulitan = kesulitan;
     }
 
-    public String getDeksripsi() {
-        return deksripsi;
+    public String getKategori() {
+        return kategori;
     }
 
-    public void setDeksripsi(String deksripsi) {
-        this.deksripsi = deksripsi;
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public ArrayList<String> getBahan() {
@@ -97,12 +106,14 @@ public class RecipeResponse {
         this.bahan = bahan;
     }
 
-    public ArrayList<String> getCaraMasak() {
-        return caraMasak;
+    public ArrayList<String> getCara_masak() {
+        return cara_masak;
     }
 
-    public void setCaraMasak(ArrayList<String> caraMasak) {
-        this.caraMasak = caraMasak;
+    public void setCara_masak(ArrayList<String> cara_masak) {
+        this.cara_masak = cara_masak;
     }
+
+
 
 }

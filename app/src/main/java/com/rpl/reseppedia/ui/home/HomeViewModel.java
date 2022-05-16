@@ -12,10 +12,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.rpl.reseppedia.source.remote.response.RecipeResponse;
+
+import java.util.ArrayList;
 
 public class HomeViewModel extends ViewModel {
 
     //buat coba2 firebase disini dulu
+    private ArrayList<RecipeResponse> recipeList = new ArrayList<>();;
 
     private final MutableLiveData<String> mText;
 
@@ -29,7 +33,7 @@ public class HomeViewModel extends ViewModel {
         return mText;
     }
 
-    public void getRecipe() {
+    public ArrayList<RecipeResponse> getRecipe() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("Resep")
@@ -39,13 +43,19 @@ public class HomeViewModel extends ViewModel {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                         if (task.isSuccessful()) {
+                            recipeList.clear();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("Data Resep", document.getId() + " => " + document.getData());
+
+                                RecipeResponse recipe = document.toObject(RecipeResponse.class);
+                                recipeList.add(recipe);
+                                Log.d("Objek Resep", String.valueOf(recipeList.size()));
                             }
                         } else {
                             Log.w("Data Resep", "Error getting documents.", task.getException());
                         }
                     }
                 });
+        return recipeList;
     }
 }

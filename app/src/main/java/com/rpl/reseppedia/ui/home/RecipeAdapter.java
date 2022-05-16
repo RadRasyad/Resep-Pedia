@@ -1,5 +1,6 @@
 package com.rpl.reseppedia.ui.home;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -15,10 +16,13 @@ import java.util.ArrayList;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
-    private ArrayList<RecipeResponse> listRecipe;
+    private ArrayList<RecipeResponse> listRecipe = new ArrayList<>();
 
-    public RecipeAdapter(ArrayList<RecipeResponse> listRecipe) {
-        this.listRecipe = listRecipe;
+    public void setRecipe(ArrayList<RecipeResponse> listRecipe) {
+        if (listRecipe!=null) {
+            this.listRecipe.clear();
+            this.listRecipe = listRecipe;
+        }
     }
 
     @NonNull
@@ -51,7 +55,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         }
 
         void bind(RecipeResponse recipe) {
-            binding.tvRecipeName.setText(recipe.getName());
+            Log.d("nama resep : ", String.valueOf(recipe.getBahan()));
+            binding.tvRecipeName.setText(recipe.getNama());
             Picasso.get().load(recipe.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).fit().into(binding.ivRecipe);
         }
     }
