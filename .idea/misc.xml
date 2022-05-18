@@ -3,18 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable-v24/ic_broken_image_black.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_error.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/ic_resepedia_title.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_cook_selector.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_heart_selector.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/drawable/nav_home_selector.xml" value="0.31" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/fragment_home.xml" value="0.28730226592560926" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/layout/recipe_row.xml" value="0.28730226592560926" />
-        <entry key="..\:/Kuliah/Semester 4/RPL/ResepPedia/app/src/main/res/menu/bottom_nav_menu.xml" value="0.28730226592560926" />
+        <entry key="..\:/Users/User/StudioProjects/Resep-Pedia/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/User/StudioProjects/Resep-Pedia/app/src/main/res/layout/activity_splash_screen.xml" value="0.21" />
+        <entry key="..\:/Users/User/StudioProjects/Resep-Pedia/app/src/main/res/layout/fragment_cook.xml" value="0.15" />
+        <entry key="..\:/Users/User/StudioProjects/Resep-Pedia/app/src/main/res/layout/fragment_home.xml" value="0.15" />
+        <entry key="..\:/Users/User/StudioProjects/Resep-Pedia/app/src/main/res/layout/fragment_wishlist.xml" value="0.21" />
+        <entry key="..\:/Users/User/StudioProjects/Resep-Pedia/app/src/main/res/layout/recipe_row.xml" value="0.21" />
       </map>
     </option>
   </component>
