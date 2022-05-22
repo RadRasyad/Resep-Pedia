@@ -12,7 +12,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.rpl.reseppedia.source.local.LocalDataSource;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
-import com.rpl.reseppedia.source.remote.RemoteDataSource;
 import com.rpl.reseppedia.source.remote.response.ApiResponse;
 import com.rpl.reseppedia.source.remote.response.RecipeResponse;
 import com.rpl.reseppedia.utils.AppExecutors;
@@ -27,20 +26,19 @@ public class RecipeRepository implements RecipeDataSource {
 
     private volatile static RecipeRepository INSTANCE = null;
 
-    private final RemoteDataSource remoteDataSource;
-    private final LocalDataSource localDataSource;
+        private final LocalDataSource localDataSource;
     private final AppExecutors appExecutors;
 
-    private RecipeRepository(@NonNull RemoteDataSource remoteDataSource, @NonNull LocalDataSource localDataSource, AppExecutors appExecutors) {
-        this.remoteDataSource = remoteDataSource;
+    private RecipeRepository( @NonNull LocalDataSource localDataSource, AppExecutors appExecutors) {
+
         this.localDataSource = localDataSource;
         this.appExecutors = appExecutors;
     }
 
-    public static RecipeRepository getInstance(RemoteDataSource remoteData, LocalDataSource localDataSource, AppExecutors appExecutors) {
+    public static RecipeRepository getInstance(LocalDataSource localDataSource, AppExecutors appExecutors) {
         if (INSTANCE == null) {
             synchronized (RecipeRepository.class) {
-                INSTANCE = new RecipeRepository(remoteData, localDataSource, appExecutors);
+                INSTANCE = new RecipeRepository(localDataSource, appExecutors);
             }
         }
         return INSTANCE;
@@ -67,7 +65,7 @@ public class RecipeRepository implements RecipeDataSource {
 
             @Override
             protected LiveData<ApiResponse<List<RecipeResponse>>> createCall() {
-
+                EspressoIdlingResource.increment();
                 List<RecipeResponse> recipeList = new ArrayList<>();
                 MutableLiveData<ApiResponse<List<RecipeResponse>>> resultData = new MutableLiveData<>();
 
@@ -91,6 +89,7 @@ public class RecipeRepository implements RecipeDataSource {
                                 Log.w("Data Resep", "Error getting documents.", task.getException());
                             }
                             resultData.setValue(ApiResponse.success(recipeList));
+                            EspressoIdlingResource.decrement();
                         });
 
                 return resultData;
