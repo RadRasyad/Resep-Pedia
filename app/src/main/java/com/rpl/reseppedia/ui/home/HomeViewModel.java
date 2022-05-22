@@ -24,38 +24,6 @@ public class HomeViewModel extends ViewModel {
 
     private RecipeRepository recipeRepository;
     //buat coba2 firebase disini dulu
-    private ArrayList<RecipeResponse> recipeList = new ArrayList<>();
-
-
-    /*
-    public ArrayList<RecipeResponse> getRecipe() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        db.collection("Resep")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
-                        if (task.isSuccessful()) {
-                            recipeList.clear();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("Data Resep", document.getId() + " => " + document.getData());
-
-                                RecipeResponse recipe = document.toObject(RecipeResponse.class);
-                                recipeList.add(recipe);
-                                Log.d("Objek Resep", String.valueOf(recipeList.size()));
-                            }
-                        } else {
-                            Log.w("Data Resep", "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-        return recipeList;
-    }
-    */
-
-
 
     public HomeViewModel(RecipeRepository mRecipeRepository) {
         this.recipeRepository = mRecipeRepository;

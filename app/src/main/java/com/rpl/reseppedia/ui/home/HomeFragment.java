@@ -67,26 +67,6 @@ public class HomeFragment extends Fragment {
             binding.rvRecipe.setHasFixedSize(true);
             binding.rvRecipe.setAdapter(recipeAdapter);
 
-
-
-            /*
-            HomeViewModel homeViewModel =
-                    new ViewModelProvider(this).get(HomeViewModel.class);
-            ArrayList<RecipeResponse> recipeList = homeViewModel.getRecipe();
-
-            ResepAdapter resepAdapter = new ResepAdapter();
-            if (recipeList != null) {
-                Log.d("RV : ", "Data didapatkan");
-                resepAdapter.setRecipe(recipeList);
-                resepAdapter.notifyDataSetChanged();
-            }
-            binding.rvRecipe.setLayoutManager(new LinearLayoutManager(getContext()));
-            binding.rvRecipe.setHasFixedSize(true);
-            binding.rvRecipe.setAdapter(resepAdapter);
-
-             */
-
-
         }
     }
 
