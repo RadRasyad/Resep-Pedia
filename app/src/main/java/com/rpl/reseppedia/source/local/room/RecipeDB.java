@@ -5,12 +5,14 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 
 @Database(entities = {RecipeEntity.class},
     version = 1,
     exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class RecipeDB extends RoomDatabase {
     public abstract RecipeDAO recipeDAO();
 

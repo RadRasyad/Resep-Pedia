@@ -1,24 +1,28 @@
 package com.rpl.reseppedia.source.local.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 
-@Entity(tableName = "recipeentity")
+@Entity(tableName = "recipe")
 public class RecipeEntity {
 
+    @PrimaryKey
+    @NonNull
     @ColumnInfo(name = "id")
     private String id;
 
     @ColumnInfo(name = "name")
-    private String name;
+    private String nama;
 
     @ColumnInfo(name = "penulis")
     private String penulis;
 
-    @ColumnInfo(name = "dirilis")
-    private String dirilis;
+    @ColumnInfo(name = "ditulis")
+    private String ditulis;
 
     @ColumnInfo(name = "waktu")
     private String waktu;
@@ -28,6 +32,9 @@ public class RecipeEntity {
 
     @ColumnInfo(name = "kesulitan")
     private String kesulitan;
+
+    @ColumnInfo(name = "kategori")
+    private String kategori;
 
     @ColumnInfo(name = "deskripsi")
     private String deksripsi;
@@ -41,20 +48,37 @@ public class RecipeEntity {
     @ColumnInfo(name = "caraMasak")
     private ArrayList<String> caraMasak;
 
+    public RecipeEntity(@NonNull String id, String nama, String penulis, String ditulis, String waktu, String porsi, String kesulitan, String kategori, String deksripsi, String foto, ArrayList<String> bahan, ArrayList<String> caraMasak) {
+        this.id = id;
+        this.nama = nama;
+        this.penulis = penulis;
+        this.ditulis = ditulis;
+        this.waktu = waktu;
+        this.porsi = porsi;
+        this.kesulitan = kesulitan;
+        this.kategori = kategori;
+        this.deksripsi = deksripsi;
+        this.foto = foto;
+        this.bahan = bahan;
+        this.caraMasak = caraMasak;
+    }
+
+
+    @NonNull
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNama() {
+        return nama;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public String getPenulis() {
@@ -65,12 +89,12 @@ public class RecipeEntity {
         this.penulis = penulis;
     }
 
-    public String getDirilis() {
-        return dirilis;
+    public String getDitulis() {
+        return ditulis;
     }
 
-    public void setDirilis(String dirilis) {
-        this.dirilis = dirilis;
+    public void setDitulis(String ditulis) {
+        this.ditulis = ditulis;
     }
 
     public String getWaktu() {
@@ -95,6 +119,14 @@ public class RecipeEntity {
 
     public void setKesulitan(String kesulitan) {
         this.kesulitan = kesulitan;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+
+    public void setKategori(String kategori) {
+        this.kategori = kategori;
     }
 
     public String getDeksripsi() {
@@ -128,4 +160,5 @@ public class RecipeEntity {
     public void setCaraMasak(ArrayList<String> caraMasak) {
         this.caraMasak = caraMasak;
     }
+
 }

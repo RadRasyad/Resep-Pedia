@@ -1,29 +1,40 @@
 package com.rpl.reseppedia.ui.home;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.RecipeRowBinding;
-import com.rpl.reseppedia.source.remote.response.RecipeResponse;
+import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
+public class RecipeAdapter extends PagedListAdapter<RecipeEntity, RecipeAdapter.RecipeViewHolder> {
 
-    private ArrayList<RecipeResponse> listRecipe = new ArrayList<>();
-
-    public void setRecipe(ArrayList<RecipeResponse> listRecipe) {
-        if (listRecipe!=null) {
-            this.listRecipe.clear();
-            this.listRecipe = listRecipe;
-        }
+    RecipeAdapter() {
+        super(DIFF_CALLBACK);
     }
+
+    private static DiffUtil.ItemCallback<RecipeEntity> DIFF_CALLBACK =
+            new DiffUtil.ItemCallback<RecipeEntity>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull RecipeEntity oldItem, @NonNull RecipeEntity newItem) {
+                    return oldItem.getId().equals(newItem.getId());
+                }
+
+                @SuppressLint("DiffUtilEquals")
+                @Override
+                public boolean areContentsTheSame(@NonNull RecipeEntity oldItem, @NonNull RecipeEntity newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
 
     @NonNull
     @Override
@@ -33,28 +44,23 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-
-        RecipeResponse recipe = listRecipe.get(position);
-
-        holder.bind(recipe);
+    public void onBindViewHolder(@NonNull final RecipeViewHolder holder, int position) {
+        RecipeEntity recipe = getItem(position);
+        if (recipe!=null) {
+            holder.bind(recipe);
+        }
     }
 
-    @Override
-    public int getItemCount() {
-        return listRecipe.size();
-    }
+    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
 
-    public class RecipeViewHolder extends RecyclerView.ViewHolder {
-
-        private final RecipeRowBinding binding;
+        final RecipeRowBinding binding;
 
         public RecipeViewHolder(RecipeRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        void bind(RecipeResponse recipe) {
+        void bind(RecipeEntity recipe) {
             Log.d("nama resep : ", String.valueOf(recipe.getBahan()));
             binding.tvRecipeName.setText(recipe.getNama());
             Picasso.get().load(recipe.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).fit().into(binding.ivRecipe);
