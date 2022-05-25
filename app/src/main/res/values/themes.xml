@@ -19,9 +19,4 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.ResepPedia.SplashScreen">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="colorPrimaryVariant">@color/secondaryColor</item>
-    </style>
 </resources>
