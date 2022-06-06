@@ -8,8 +8,9 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
+import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 
-@Database(entities = {RecipeEntity.class},
+@Database(entities = {RecipeEntity.class, WishlistRecipeEntity.class},
     version = 1,
     exportSchema = false)
 @TypeConverters({Converters.class})

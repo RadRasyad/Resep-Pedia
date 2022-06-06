@@ -23,10 +23,6 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);

@@ -1,8 +1,10 @@
 package com.rpl.reseppedia.source.local;
 
+import androidx.lifecycle.LiveData;
 import androidx.paging.DataSource;
 
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
+import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 import com.rpl.reseppedia.source.local.room.RecipeDAO;
 
 import java.util.ArrayList;
@@ -30,6 +32,22 @@ public class LocalDataSource {
 
     public void insertRecipe(ArrayList<RecipeEntity> recipe) {
         mRecipeDao.insertRecipe(recipe);
+    }
+
+    public LiveData<RecipeEntity> getRecipeById(final String recipeId) {
+        return mRecipeDao.getRecipeById(recipeId);
+    }
+
+    public DataSource.Factory<Integer, WishlistRecipeEntity> getAllWhishlist() {
+        return mRecipeDao.getAllWishlist();
+    }
+
+    public void insertWishlist(ArrayList<WishlistRecipeEntity> recipe) {
+        mRecipeDao.insertWishlist(recipe);
+    }
+
+    public LiveData<WishlistRecipeEntity> getWishlistById(final String recipeId) {
+        return mRecipeDao.getWishlistById(recipeId);
     }
 
 }

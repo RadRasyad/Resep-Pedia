@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.rpl.reseppedia.source.local.LocalDataSource;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
+import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 import com.rpl.reseppedia.source.remote.response.ApiResponse;
 import com.rpl.reseppedia.source.remote.response.RecipeResponse;
 import com.rpl.reseppedia.utils.AppExecutors;
@@ -26,7 +27,7 @@ public class RecipeRepository implements RecipeDataSource {
 
     private volatile static RecipeRepository INSTANCE = null;
 
-        private final LocalDataSource localDataSource;
+    private final LocalDataSource localDataSource;
     private final AppExecutors appExecutors;
 
     private RecipeRepository( @NonNull LocalDataSource localDataSource, AppExecutors appExecutors) {
@@ -52,8 +53,9 @@ public class RecipeRepository implements RecipeDataSource {
             protected LiveData<PagedList<RecipeEntity>> loadFromDB() {
                 PagedList.Config config = new PagedList.Config.Builder()
                         .setEnablePlaceholders(false)
-                        .setInitialLoadSizeHint(4)
-                        .setPageSize(4)
+                        .setPrefetchDistance(4)
+                        .setInitialLoadSizeHint(10)
+                        .setPageSize(10)
                         .build();
                 return new LivePagedListBuilder<>(localDataSource.getAllRecipe(), config).build();
             }
@@ -91,7 +93,6 @@ public class RecipeRepository implements RecipeDataSource {
                             resultData.setValue(ApiResponse.success(recipeList));
                             EspressoIdlingResource.decrement();
                         });
-
                 return resultData;
             }
 
@@ -118,4 +119,25 @@ public class RecipeRepository implements RecipeDataSource {
             }
         }.asLiveData();
     }
+
+    @Override
+    public LiveData<RecipeEntity> getRecipeById(final String recipeId) {
+        return localDataSource.getRecipeById(recipeId);
+    }
+
+    @Override
+    public LiveData<PagedList<WishlistRecipeEntity>> getWishlistRecipe() {
+        PagedList.Config config = new PagedList.Config.Builder()
+                .setEnablePlaceholders(false)
+                .setInitialLoadSizeHint(10)
+                .setPageSize(10)
+                .build();
+        return new LivePagedListBuilder<>(localDataSource.getAllWhishlist(), config).build();
+    }
+
+    @Override
+    public LiveData<WishlistRecipeEntity> getWishlistById(final String recipeId) {
+        return localDataSource.getWishlistById(recipeId);
+    }
+
 }
