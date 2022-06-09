@@ -23,6 +23,7 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="25dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,22 +31,19 @@
 
             <ImageView
                 android:id="@+id/iv_recipe"
-                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:src="@drawable/placeholder_img" />
 
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_recipe_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
             android:text="@string/placeholder_nama_resep"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="@+id/cardView"
