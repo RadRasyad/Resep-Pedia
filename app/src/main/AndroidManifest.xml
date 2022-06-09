@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResepPedia">
         <activity
+            android:name=".ui.onboarding.on_board"
+            android:exported="false"
+            android:theme="@style/Theme.ResepPedia.NoActionBar"/>
+        <activity
             android:name=".ui.detail.recipe.DetailRecipeActivity"
             android:theme="@style/Theme.ResepPedia.NoActionBar"
             android:exported="false" />

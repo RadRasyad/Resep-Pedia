@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.rpl.reseppedia.databinding.ActivitySplashScreenBinding;
 import com.rpl.reseppedia.ui.main.MainActivity;
+import com.rpl.reseppedia.ui.onboarding.on_board;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -21,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
 
         int time = 3000;
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+            Intent intent = new Intent(SplashScreen.this, on_board.class);
             startActivity(intent);
             finish();
         }, time);
