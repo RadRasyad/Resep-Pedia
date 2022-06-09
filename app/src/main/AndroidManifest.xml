@@ -15,6 +15,7 @@
         android:theme="@style/Theme.ResepPedia">
         <activity
             android:name=".ui.detail.recipe.DetailRecipeActivity"
+            android:theme="@style/Theme.ResepPedia.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"

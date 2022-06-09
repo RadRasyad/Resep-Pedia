@@ -7,4 +7,6 @@
     <string name="title_cook">Cook</string>
     <string name="title_wishlist">Wishlist</string>
     <string name="placeholder_nama_resep">Nama Resep</string>
+
+    <string name="placeholder_desk">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt lorem sed odio laoreet, id dictum mauris auctor. Vestibulum lobortis rhoncus magna,vitae cursus tortor vehicula id.</string>
 </resources>

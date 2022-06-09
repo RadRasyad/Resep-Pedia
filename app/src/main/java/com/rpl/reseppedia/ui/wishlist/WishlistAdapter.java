@@ -1,6 +1,7 @@
 package com.rpl.reseppedia.ui.wishlist;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.RecipeRowBinding;
 import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
+import com.rpl.reseppedia.ui.detail.recipe.DetailRecipeActivity;
 import com.squareup.picasso.Picasso;
 
 
@@ -61,9 +63,15 @@ public class WishlistAdapter extends PagedListAdapter<WishlistRecipeEntity, Wish
         }
 
         void bind(WishlistRecipeEntity recipe) {
-            Log.d("nama resep : ", String.valueOf(recipe.getBahan()));
+
             binding.tvRecipeName.setText(recipe.getNama());
             Picasso.get().load(recipe.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).fit().into(binding.ivRecipe);
+
+            itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(itemView.getContext(), DetailRecipeActivity.class);
+                intent.putExtra(DetailRecipeActivity.EXTRA_FAV, recipe.getId());
+                itemView.getContext().startActivity(intent);
+            });
         }
     }
 }

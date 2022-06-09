@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.rpl.reseppedia.di.Injection;
 import com.rpl.reseppedia.source.RecipeRepository;
+import com.rpl.reseppedia.ui.detail.DetailViewModel;
 import com.rpl.reseppedia.ui.home.HomeViewModel;
 import com.rpl.reseppedia.ui.wishlist.WishlistViewModel;
 
@@ -37,6 +38,8 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new HomeViewModel(mRecipeRepository);
         } else if (modelClass.isAssignableFrom(WishlistViewModel.class)) {
             return (T) new WishlistViewModel(mRecipeRepository);
+        } else if (modelClass.isAssignableFrom(DetailViewModel.class)) {
+            return (T) new DetailViewModel(mRecipeRepository);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
