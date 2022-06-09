@@ -3,6 +3,7 @@ package com.rpl.reseppedia.source.local;
 import androidx.lifecycle.LiveData;
 import androidx.paging.DataSource;
 
+import com.rpl.reseppedia.source.local.entity.CookingEntity;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 import com.rpl.reseppedia.source.local.room.RecipeDAO;
@@ -48,6 +49,14 @@ public class LocalDataSource {
 
     public LiveData<WishlistRecipeEntity> getWishlistById(final String recipeId) {
         return mRecipeDao.getWishlistById(recipeId);
+    }
+
+    public void insertCook(ArrayList<CookingEntity> recipe) {
+        mRecipeDao.insertCook(recipe);
+    }
+
+    public LiveData<CookingEntity> getCook(final String recipeId) {
+        return mRecipeDao.getCook(recipeId);
     }
 
 }

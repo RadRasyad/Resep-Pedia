@@ -5,12 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.rpl.reseppedia.databinding.FragmentWishlistBinding;
+import com.rpl.reseppedia.ui.home.HomeViewModel;
+import com.rpl.reseppedia.ui.home.RecipeAdapter;
+import com.rpl.reseppedia.vm.ViewModelFactory;
 
 public class WishlistFragment extends Fragment {
 
@@ -18,15 +24,35 @@ public class WishlistFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        WishlistViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(WishlistViewModel.class);
-
         binding = FragmentWishlistBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        return binding.getRoot();
+    }
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (getActivity()!=null) {
+
+            ViewModelFactory factory = ViewModelFactory.getInstance(requireActivity());
+            WishlistViewModel homeVM =
+                    new ViewModelProvider(this, (ViewModelProvider.Factory) factory).get(WishlistViewModel.class);
+
+
+            WishlistAdapter recipeAdapter = new WishlistAdapter();
+            homeVM.getRecipe().observe( requireActivity(), recipe -> {
+                if (recipe != null) {
+                    recipeAdapter.submitList(recipe);
+                } else {
+                    binding.rvRecipe.setVisibility(View.GONE);
+                }
+            });
+
+            binding.rvRecipe.setLayoutManager(new LinearLayoutManager(getContext()));
+            binding.rvRecipe.setHasFixedSize(true);
+            binding.rvRecipe.setAdapter(recipeAdapter);
+
+        }
     }
 
     @Override

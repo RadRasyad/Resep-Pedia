@@ -8,19 +8,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_rp"
+        android:icon="@mipmap/ic_launcher__main_rp"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_rp_round"
+        android:roundIcon="@mipmap/ic_launcher__main_rp_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ResepPedia">
+        <activity
+            android:name=".ui.detail.recipe.DetailRecipeActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main" />
         <activity
             android:name=".ui.splashscreen.SplashScreen"
-            android:theme="@style/Theme.ResepPedia.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.ResepPedia.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

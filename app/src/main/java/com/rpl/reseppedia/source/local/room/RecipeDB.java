@@ -7,10 +7,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.rpl.reseppedia.source.local.entity.CookingEntity;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 
-@Database(entities = {RecipeEntity.class, WishlistRecipeEntity.class},
+@Database(entities = {RecipeEntity.class, WishlistRecipeEntity.class, CookingEntity.class},
     version = 1,
     exportSchema = false)
 @TypeConverters({Converters.class})

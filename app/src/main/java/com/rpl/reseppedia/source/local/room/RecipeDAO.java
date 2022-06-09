@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.rpl.reseppedia.source.local.entity.CookingEntity;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 
@@ -33,4 +34,10 @@ public interface RecipeDAO {
 
     @Query("SELECT * FROM wishlist WHERE id = :recipeId")
     LiveData<WishlistRecipeEntity> getWishlistById(String recipeId);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCook(List<CookingEntity> recipe);
+
+    @Query("SELECT * FROM wishlist WHERE id = :recipeId")
+    LiveData<CookingEntity> getCook(String recipeId);
 }

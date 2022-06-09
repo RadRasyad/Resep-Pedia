@@ -1,19 +1,23 @@
 package com.rpl.reseppedia.ui.wishlist;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.paging.PagedList;
+
+import com.rpl.reseppedia.source.RecipeRepository;
+import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 
 public class WishlistViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    private RecipeRepository recipeRepository;
 
-    public WishlistViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+    public WishlistViewModel(RecipeRepository mRecipeRepository) {
+        this.recipeRepository = mRecipeRepository;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<PagedList<WishlistRecipeEntity>> getRecipe() {
+        return recipeRepository.getWishlistRecipe();
     }
+
+
 }
