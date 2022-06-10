@@ -64,7 +64,7 @@ public class RecipeAdapter extends PagedListAdapter<RecipeEntity, RecipeAdapter.
 
         void bind(RecipeEntity recipe) {
             binding.tvRecipeName.setText(recipe.getNama());
-            Picasso.get().load(recipe.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).fit().into(binding.ivRecipe);
+            Picasso.get().load(recipe.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).centerCrop().fit().into(binding.ivRecipe);
 
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(itemView.getContext(), DetailRecipeActivity.class);

@@ -4,6 +4,7 @@ package com.rpl.reseppedia.ui.detail.recipe;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.ActivityDetailRecipeBinding;
 import com.rpl.reseppedia.ui.detail.DetailViewModel;
+import com.rpl.reseppedia.ui.detail.IngredientsAdapter;
 import com.rpl.reseppedia.ui.home.HomeViewModel;
 import com.rpl.reseppedia.vm.ViewModelFactory;
 import com.squareup.picasso.Picasso;
@@ -59,7 +61,12 @@ public class DetailRecipeActivity extends AppCompatActivity {
                     binding.tvPorsi.setText(data.getPorsi());
                     binding.tvDesc.setText(data.getDeksripsi());
 
-                    Picasso.get().load(data.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).fit().into(binding.ivImg);
+                    Picasso.get().load(data.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).centerCrop().fit().into(binding.ivImg);
+
+                    IngredientsAdapter iAdapter = new IngredientsAdapter(data.getBahan());
+                    binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    binding.rvBahan.setHasFixedSize(true);
+                    binding.rvBahan.setAdapter(iAdapter);
                 });
             }
         }
