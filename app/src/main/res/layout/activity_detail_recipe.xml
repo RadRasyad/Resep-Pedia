@@ -4,25 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_scrollFlags="noScroll"
     tools:context=".ui.detail.recipe.DetailRecipeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:elevation="4dp">
-        
+
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:elevation="0dp">
+            android:elevation="0dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                android:fitsSystemWindows="false"
                 app:layout_collapseMode="pin"
-                android:fitsSystemWindows="false"/>
+                app:menu="@menu/detail_menu"/>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_img"
@@ -44,8 +46,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="32dp"
-            android:paddingHorizontal="16dp">
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="32dp">
 
             <TextView
                 android:id="@+id/tv_title"
@@ -83,11 +85,11 @@
                 android:id="@+id/ic_pot"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_pot"
-                app:layout_constraintTop_toBottomOf="@id/tv_author"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_author" />
 
             <TextView
                 android:id="@+id/tv_kesulitan"
@@ -144,11 +146,11 @@
                 android:id="@+id/tv_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
                 android:text="@string/placeholder_desk"
                 android:textSize="18sp"
-                android:justificationMode="inter_word"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ic_timer" />
@@ -157,8 +159,8 @@
                 android:id="@+id/label_bahan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Bahan :"
                 android:textColor="@color/black"
                 android:textSize="22sp"
@@ -170,24 +172,25 @@
                 android:id="@+id/rv_bahan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:isScrollContainer="false"
                 android:padding="8dp"
+                android:scrollbars="none"
                 app:layout_constraintTop_toBottomOf="@+id/label_bahan"
                 tools:layout_editor_absoluteX="16dp"
-                tools:listitem="@layout/row_bahan"
-                android:isScrollContainer="false"
-                android:scrollbars="none"/>
+
+                tools:listitem="@layout/row_bahan" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_masak"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginVertical="32dp"
+                android:layout_height="64dp"
                 android:layout_marginHorizontal="48dp"
-                app:cornerRadius="15dp"
+                android:layout_marginVertical="32dp"
                 android:text="Masak"
-                app:layout_constraintTop_toBottomOf="@id/rv_bahan"
+                app:cornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/rv_bahan" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

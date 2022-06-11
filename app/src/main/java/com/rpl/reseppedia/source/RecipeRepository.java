@@ -11,6 +11,7 @@ import androidx.paging.PagedList;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.rpl.reseppedia.source.local.LocalDataSource;
+import com.rpl.reseppedia.source.local.entity.CookingEntity;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 import com.rpl.reseppedia.source.remote.response.ApiResponse;
@@ -138,6 +139,30 @@ public class RecipeRepository implements RecipeDataSource {
     @Override
     public LiveData<WishlistRecipeEntity> getWishlistById(final String recipeId) {
         return localDataSource.getWishlistById(recipeId);
+    }
+
+    public void insertWishlist(WishlistRecipeEntity recipe) {
+        localDataSource.insertWishlist(recipe);
+    }
+
+    public void deleteWishlist(String id) {
+        localDataSource.deleteWishlist(id);
+    }
+
+    public int checkWish(String recipeId){
+        return localDataSource.checkWish(recipeId);
+    }
+
+    public LiveData<CookingEntity> getCook(String recipeId) {
+        return localDataSource.getCook(recipeId);
+    }
+
+    public void insertCook(CookingEntity recipe) {
+        localDataSource.insertCook(recipe);
+    }
+
+    public void deleteCook(String id) {
+        localDataSource.deleteCook(id);
     }
 
 }
