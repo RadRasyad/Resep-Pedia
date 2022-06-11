@@ -1,6 +1,5 @@
 package com.rpl.reseppedia.ui.detail.recipe;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
