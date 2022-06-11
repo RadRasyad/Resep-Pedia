@@ -1,5 +1,5 @@
 # ResepPedia - Aplikasi Resep Masakan
-Aplikasi Resep Masakan
+Aplikasi Resep Masakan - untuk tugas Rekayasa Perangkat Lunak
 
 **Team**
 1. [iqbalhh101](https://github.com/iqbalhh101)
