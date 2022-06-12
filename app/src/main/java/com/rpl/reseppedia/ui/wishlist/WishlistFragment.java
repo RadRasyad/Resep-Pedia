@@ -41,10 +41,13 @@ public class WishlistFragment extends Fragment {
 
             WishlistAdapter recipeAdapter = new WishlistAdapter();
             homeVM.getRecipe().observe( requireActivity(), recipe -> {
-                if (recipe != null) {
-                    recipeAdapter.submitList(recipe);
-                } else {
+                if (recipe.isEmpty()) {
                     binding.rvRecipe.setVisibility(View.GONE);
+                    binding.emptyState.getRoot().setVisibility(View.VISIBLE);
+
+                } else {
+                    recipeAdapter.submitList(recipe);
+                    binding.emptyState.getRoot().setVisibility(View.GONE);
                 }
             });
 
