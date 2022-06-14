@@ -77,15 +77,15 @@ public class HomeFragment extends Fragment {
             if (recipe != null) {
                 switch (recipe.status) {
                     case LOADING:
-                        //binding.progressBar.setVisibility(View.VISIBLE);
+                        binding.progressBar.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
-                        //binding.progressBar.setVisibility(View.GONE);
+                        binding.progressBar.setVisibility(View.GONE);
 
                         recipeAdapter.submitList(recipe.data);
                         break;
                     case ERROR:
-                        //binding.progressBar.setVisibility(View.GONE);
+                        binding.progressBar.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -103,10 +103,10 @@ public class HomeFragment extends Fragment {
             if (recipe != null) {
                 switch (recipe.status) {
                     case LOADING:
-                        //binding.progressBar.setVisibility(View.VISIBLE);
+                        binding.progressBar.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
-                        //binding.progressBar.setVisibility(View.GONE);
+                        binding.progressBar.setVisibility(View.GONE);
                         if (!recipe.data.isEmpty()) {
                             binding.rvRecipe.setVisibility(View.VISIBLE);
                             recipeAdapter.submitList(recipe.data);
@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment {
                         }
                         break;
                     case ERROR:
-                        //binding.progressBar.setVisibility(View.GONE);
+                        binding.progressBar.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
                         break;
                 }
