@@ -78,7 +78,6 @@ public class RecipeRepository implements RecipeDataSource {
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("Resep")
-                        .whereEqualTo("kategori", "makanan ringan")
                         .get()
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
@@ -195,7 +194,7 @@ public class RecipeRepository implements RecipeDataSource {
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("Resep")
-                        .whereEqualTo("kategori", "makanan berat")
+                        .whereEqualTo("kategori", kategori)
                         .get()
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
