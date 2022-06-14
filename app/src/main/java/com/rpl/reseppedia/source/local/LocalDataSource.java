@@ -35,6 +35,10 @@ public class LocalDataSource {
         mRecipeDao.insertRecipe(recipe);
     }
 
+    public void delLocalRecipe() {
+        mRecipeDao.delLocalRecipe();
+    }
+
     public LiveData<RecipeEntity> getRecipeById(String recipeId) {
         return mRecipeDao.getRecipeById(recipeId);
     }

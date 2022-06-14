@@ -65,12 +65,38 @@
         android:layout_height="match_parent"
         android:layout_marginTop="55dp">
 
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/mkn_ringan"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Makanan Ringan" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/mkn_berat"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Makanan Berat" />
+
+        </com.google.android.material.chip.ChipGroup>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="-43dp"
-            tools:layout_editor_absoluteY="16dp"
+            android:layout_marginTop="48dp"
             tools:listitem="@layout/recipe_row" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

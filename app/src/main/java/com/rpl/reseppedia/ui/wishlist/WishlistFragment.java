@@ -44,7 +44,6 @@ public class WishlistFragment extends Fragment {
                 if (recipe.isEmpty()) {
                     binding.rvRecipe.setVisibility(View.GONE);
                     binding.emptyState.getRoot().setVisibility(View.VISIBLE);
-
                 } else {
                     recipeAdapter.submitList(recipe);
                     binding.emptyState.getRoot().setVisibility(View.GONE);

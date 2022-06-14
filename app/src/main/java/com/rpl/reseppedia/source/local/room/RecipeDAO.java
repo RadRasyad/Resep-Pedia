@@ -23,6 +23,10 @@ public interface RecipeDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertRecipe(List<RecipeEntity> recipe);
 
+
+    @Query("DELETE FROM recipe")
+    void delLocalRecipe();
+
     @Query("SELECT * FROM recipe WHERE id = :recipeId")
     LiveData<RecipeEntity> getRecipeById(String recipeId);
 

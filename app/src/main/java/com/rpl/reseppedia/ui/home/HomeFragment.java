@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,10 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.chip.Chip;
 import com.rpl.reseppedia.databinding.FragmentHomeBinding;
 import com.rpl.reseppedia.vm.ViewModelFactory;
-
-import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -33,6 +31,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        sortData();
         if (getActivity()!=null) {
 
             ViewModelFactory factory = ViewModelFactory.getInstance(requireActivity());
@@ -64,6 +63,18 @@ public class HomeFragment extends Fragment {
             binding.rvRecipe.setAdapter(recipeAdapter);
 
         }
+    }
+
+
+    private void sortData() {
+        String sort;
+
+        binding.chipGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            Chip chip = group.findViewById(checkedId);
+            if (chip!=null) {
+                Log.d("Chip", chip.getText().toString());
+            }
+        });
     }
 
     @Override
