@@ -25,4 +25,8 @@
     <string name="placeholder_desk">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt lorem sed odio laoreet, id dictum mauris auctor. Vestibulum lobortis rhoncus magna,vitae cursus tortor vehicula id.</string>
     <string name="berhasil_simpan">Berhasil disimpan</string>
     <string name="hapus_data">Data dihapus</string>
+    <string name="namaPenulis">Nama Penulis</string>
+    <string name="namaResep">Nama Resep</string>
+    <string name="waktuMasak">Waktu Memasak</string>
+    <string name="porsi">Porsi</string>
 </resources>
