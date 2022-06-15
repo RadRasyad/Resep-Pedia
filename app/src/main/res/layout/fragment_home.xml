@@ -13,7 +13,7 @@
         android:padding="4dp"
         android:elevation="16dp"
         android:fitsSystemWindows="true"
-        android:background="@drawable/home_appbar_bg"
+        android:theme="@style/Theme.ResepPedia.Searchbar"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
