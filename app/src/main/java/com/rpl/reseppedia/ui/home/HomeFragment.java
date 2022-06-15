@@ -106,7 +106,11 @@ public class HomeFragment extends Fragment {
                         recipeAdapter.submitList(recipe.data);
                         break;
                     case ERROR:
-                        binding.progressBar.setVisibility(View.GONE);
+                        try {
+                            binding.progressBar.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -120,23 +124,39 @@ public class HomeFragment extends Fragment {
 
     private void getRecipeByCategories(String kategori) {
 
-        homeVM.getRecipebyCategories(kategori).observe( requireActivity(), recipe -> {
+        homeVM.getRecipebyCategories(kategori).observe(requireActivity(), recipe -> {
             if (recipe != null) {
                 switch (recipe.status) {
                     case LOADING:
-                        binding.progressBar.setVisibility(View.VISIBLE);
+                        try {
+                            binding.progressBar.setVisibility(View.VISIBLE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case SUCCESS:
-                        binding.progressBar.setVisibility(View.GONE);
                         if (!recipe.data.isEmpty()) {
+                            try {
+                                binding.progressBar.setVisibility(View.GONE);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             binding.rvRecipe.setVisibility(View.VISIBLE);
                             recipeAdapter.submitList(recipe.data);
                         } else {
-                            binding.rvRecipe.setVisibility(View.GONE);
+                            try {
+                                binding.progressBar.setVisibility(View.GONE);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                         break;
                     case ERROR:
-                        binding.progressBar.setVisibility(View.GONE);
+                        try {
+                            binding.progressBar.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -153,19 +173,35 @@ public class HomeFragment extends Fragment {
             if (recipe != null) {
                 switch (recipe.status) {
                     case LOADING:
-                        binding.progressBar.setVisibility(View.VISIBLE);
+                        try {
+                            binding.progressBar.setVisibility(View.VISIBLE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case SUCCESS:
-                        binding.progressBar.setVisibility(View.GONE);
+                        try {
+                            binding.progressBar.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         if (!recipe.data.isEmpty()) {
                             binding.rvRecipe.setVisibility(View.VISIBLE);
                             recipeAdapter.submitList(recipe.data);
                         } else {
-                            binding.rvRecipe.setVisibility(View.GONE);
+                            try {
+                                binding.progressBar.setVisibility(View.GONE);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                         break;
                     case ERROR:
-                        binding.progressBar.setVisibility(View.GONE);
+                        try {
+                            binding.progressBar.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
                         break;
                 }
