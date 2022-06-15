@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResepPedia">
         <activity
+            android:name=".activity_deskripsi"
+            android:exported="false" />
+        <activity
+            android:name=".activity_saran"
+            android:exported="false" />
+        <activity
             android:name=".ui.onboarding.on_board"
             android:exported="false"
-            android:theme="@style/Theme.ResepPedia.NoActionBar"/>
+            android:theme="@style/Theme.ResepPedia.NoActionBar" />
         <activity
             android:name=".ui.detail.recipe.DetailRecipeActivity"
-            android:theme="@style/Theme.ResepPedia.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.ResepPedia.NoActionBar" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
