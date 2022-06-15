@@ -23,6 +23,10 @@ public interface RecipeDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertRecipe(List<RecipeEntity> recipe);
 
+
+    @Query("DELETE FROM recipe")
+    void delLocalRecipe();
+
     @Query("SELECT * FROM recipe WHERE id = :recipeId")
     LiveData<RecipeEntity> getRecipeById(String recipeId);
 
@@ -30,13 +34,22 @@ public interface RecipeDAO {
     DataSource.Factory<Integer, WishlistRecipeEntity> getAllWishlist();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertWishlist(List<WishlistRecipeEntity> recipe);
+    void insertWishlist(WishlistRecipeEntity recipe);
+
+    @Query("DELETE FROM wishlist WHERE id = :recipeId")
+    void deleteWishlist(String recipeId);
 
     @Query("SELECT * FROM wishlist WHERE id = :recipeId")
     LiveData<WishlistRecipeEntity> getWishlistById(String recipeId);
 
+    @Query("SELECT count(*) FROM wishlist WHERE wishlist.id = :recipeId")
+    int checkWish(String recipeId);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertCook(List<CookingEntity> recipe);
+    void insertCook(CookingEntity recipe);
+
+    @Query("DELETE FROM cook WHERE id = :recipeId")
+    void deleteCook(String recipeId);
 
     @Query("SELECT * FROM wishlist WHERE id = :recipeId")
     LiveData<CookingEntity> getCook(String recipeId);

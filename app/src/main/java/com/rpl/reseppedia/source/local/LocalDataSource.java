@@ -2,14 +2,15 @@ package com.rpl.reseppedia.source.local;
 
 import androidx.lifecycle.LiveData;
 import androidx.paging.DataSource;
+import androidx.paging.PagedList;
 
 import com.rpl.reseppedia.source.local.entity.CookingEntity;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
 import com.rpl.reseppedia.source.local.entity.WishlistRecipeEntity;
 import com.rpl.reseppedia.source.local.room.RecipeDAO;
+import com.rpl.reseppedia.vo.Resource;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LocalDataSource {
 
@@ -35,7 +36,11 @@ public class LocalDataSource {
         mRecipeDao.insertRecipe(recipe);
     }
 
-    public LiveData<RecipeEntity> getRecipeById(final String recipeId) {
+    public void delLocalRecipe() {
+        mRecipeDao.delLocalRecipe();
+    }
+
+    public LiveData<RecipeEntity> getRecipeById(String recipeId) {
         return mRecipeDao.getRecipeById(recipeId);
     }
 
@@ -43,19 +48,31 @@ public class LocalDataSource {
         return mRecipeDao.getAllWishlist();
     }
 
-    public void insertWishlist(ArrayList<WishlistRecipeEntity> recipe) {
+    public void insertWishlist(WishlistRecipeEntity recipe) {
         mRecipeDao.insertWishlist(recipe);
     }
 
-    public LiveData<WishlistRecipeEntity> getWishlistById(final String recipeId) {
+    public void deleteWishlist(String id) {
+        mRecipeDao.deleteWishlist(id);
+    }
+
+    public LiveData<WishlistRecipeEntity> getWishlistById(String recipeId) {
         return mRecipeDao.getWishlistById(recipeId);
     }
 
-    public void insertCook(ArrayList<CookingEntity> recipe) {
+    public int checkWish(String recipeId){
+        return mRecipeDao.checkWish(recipeId);
+    }
+
+    public void insertCook(CookingEntity recipe) {
         mRecipeDao.insertCook(recipe);
     }
 
-    public LiveData<CookingEntity> getCook(final String recipeId) {
+    public void deleteCook(String id) {
+        mRecipeDao.deleteCook(id);
+    }
+
+    public LiveData<CookingEntity> getCook(String recipeId) {
         return mRecipeDao.getCook(recipeId);
     }
 
