@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.ActivityDetailRecipeBinding;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
@@ -68,43 +70,47 @@ public class DetailRecipeActivity extends AppCompatActivity {
     public void getExtraData(String id) {
 
         detailVM.getRecipeById(id).observe(this, data -> {
-            idMain = id;
-            mapRecipe(data);
-            checkWishData();
-            binding.tvTitle.setText(data.getNama());
-            binding.tvAuthor.setText(data.getPenulis());
-            binding.tvRilis.setText(data.getDitulis());
-            binding.tvKesulitan.setText(data.getKesulitan());
-            binding.tvTime.setText(data.getWaktu());
-            binding.tvPorsi.setText(data.getPorsi());
-            binding.tvDesc.setText(data.getDeksripsi());
+            if (data!=null) {
+                idMain = id;
+                mapRecipe(data);
+                checkWishData();
+                binding.tvTitle.setText(data.getNama());
+                binding.tvAuthor.setText(data.getPenulis());
+                binding.tvRilis.setText(data.getDitulis());
+                binding.tvKesulitan.setText(data.getKesulitan());
+                binding.tvTime.setText(data.getWaktu());
+                binding.tvPorsi.setText(data.getPorsi());
+                binding.tvDesc.setText(data.getDeksripsi());
 
-            Picasso.get().load(data.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).centerCrop().fit().into(binding.ivImg);
+                Picasso.get().load(data.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).centerCrop().fit().into(binding.ivImg);
 
-            IngredientsAdapter iAdapter = new IngredientsAdapter(data.getBahan());
-            binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            binding.rvBahan.setHasFixedSize(true);
-            binding.rvBahan.setAdapter(iAdapter);
+                IngredientsAdapter iAdapter = new IngredientsAdapter(data.getBahan());
+                binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                binding.rvBahan.setHasFixedSize(true);
+                binding.rvBahan.setAdapter(iAdapter);
+            }
         });
 
 
     }
 
     private void mapRecipe(RecipeEntity data) {
-        recipe = new WishlistRecipeEntity(
-                idMain,
-                data.getNama(),
-                data.getPenulis(),
-                data.getDitulis(),
-                data.getWaktu(),
-                data.getPorsi(),
-                data.getKesulitan(),
-                data.getKategori(),
-                data.getDeksripsi(),
-                data.getFoto(),
-                data.getBahan(),
-                data.getCaraMasak()
-        );
+        if (data!=null) {
+            recipe = new WishlistRecipeEntity(
+                    idMain,
+                    data.getNama(),
+                    data.getPenulis(),
+                    data.getDitulis(),
+                    data.getWaktu(),
+                    data.getPorsi(),
+                    data.getKesulitan(),
+                    data.getKategori(),
+                    data.getDeksripsi(),
+                    data.getFoto(),
+                    data.getBahan(),
+                    data.getCaraMasak()
+            );
+        }
 
     }
 
@@ -115,43 +121,47 @@ public class DetailRecipeActivity extends AppCompatActivity {
             idMain = extras.getString(EXTRA_FAV);
             if (idMain != null) {
                 detailVM.getWishById(idMain).observe(this, data -> {
-                    mapWishlist(data);
-                    checkWishData();
-                    binding.tvTitle.setText(data.getNama());
-                    binding.tvAuthor.setText(data.getPenulis());
-                    binding.tvRilis.setText(data.getDitulis());
-                    binding.tvKesulitan.setText(data.getKesulitan());
-                    binding.tvTime.setText(data.getWaktu());
-                    binding.tvPorsi.setText(data.getPorsi());
-                    binding.tvDesc.setText(data.getDeksripsi());
+                    if (data!=null) {
+                        mapWishlist(data);
+                        checkWishData();
+                        binding.tvTitle.setText(data.getNama());
+                        binding.tvAuthor.setText(data.getPenulis());
+                        binding.tvRilis.setText(data.getDitulis());
+                        binding.tvKesulitan.setText(data.getKesulitan());
+                        binding.tvTime.setText(data.getWaktu());
+                        binding.tvPorsi.setText(data.getPorsi());
+                        binding.tvDesc.setText(data.getDeksripsi());
 
-                    Picasso.get().load(data.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).centerCrop().fit().into(binding.ivImg);
+                        Picasso.get().load(data.getFoto()).placeholder(R.drawable.placeholder_img).error(R.drawable.ic_error).centerCrop().fit().into(binding.ivImg);
 
-                    IngredientsAdapter iAdapter = new IngredientsAdapter(data.getBahan());
-                    binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    binding.rvBahan.setHasFixedSize(true);
-                    binding.rvBahan.setAdapter(iAdapter);
+                        IngredientsAdapter iAdapter = new IngredientsAdapter(data.getBahan());
+                        binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        binding.rvBahan.setHasFixedSize(true);
+                        binding.rvBahan.setAdapter(iAdapter);
+                    }
                 });
+
             }
         }
     }
 
     private void mapWishlist(WishlistRecipeEntity data) {
-        recipe = new WishlistRecipeEntity(
-                idMain,
-                data.getNama(),
-                data.getPenulis(),
-                data.getDitulis(),
-                data.getWaktu(),
-                data.getPorsi(),
-                data.getKesulitan(),
-                data.getKategori(),
-                data.getDeksripsi(),
-                data.getFoto(),
-                data.getBahan(),
-                data.getCaraMasak()
-        );
-
+        if (data!=null) {
+            recipe = new WishlistRecipeEntity(
+                    idMain,
+                    data.getNama(),
+                    data.getPenulis(),
+                    data.getDitulis(),
+                    data.getWaktu(),
+                    data.getPorsi(),
+                    data.getKesulitan(),
+                    data.getKategori(),
+                    data.getDeksripsi(),
+                    data.getFoto(),
+                    data.getBahan(),
+                    data.getCaraMasak()
+            );
+        }
     }
 
     public void checkWishData() {
@@ -175,8 +185,12 @@ public class DetailRecipeActivity extends AppCompatActivity {
         executor.execute(() -> {
             if (isSaved) {
                 detailVM.deleteWishlist(idMain);
+                Snackbar.make(binding.getRoot(), R.string.hapus_data, Snackbar.LENGTH_SHORT).show();
+                isSaved = false;
             } else {
                 detailVM.insertWishlist(recipe);
+                Snackbar.make(binding.getRoot(), R.string.berhasil_simpan, Snackbar.LENGTH_SHORT).show();
+                isSaved = true;
             }
             checkWishData();
         });

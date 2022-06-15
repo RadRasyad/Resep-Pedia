@@ -67,7 +67,6 @@ public class HomeFragment extends Fragment {
                         getRecipeByCategories("makanan berat");
                         break;
                 }
-                Log.d("Chip", chip.getText().toString());
             }
         });
     }
@@ -80,8 +79,11 @@ public class HomeFragment extends Fragment {
                         binding.progressBar.setVisibility(View.VISIBLE);
                         break;
                     case SUCCESS:
-                        binding.progressBar.setVisibility(View.GONE);
-
+                        try {
+                            binding.progressBar.setVisibility(View.GONE);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         recipeAdapter.submitList(recipe.data);
                         break;
                     case ERROR:
