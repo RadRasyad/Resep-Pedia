@@ -55,35 +55,29 @@ public class WishlistFragment extends Fragment {
                  {
                     ExecutorService executor = Executors.newSingleThreadExecutor();
                     Handler handler = new Handler(Looper.getMainLooper());
-                    executor.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (recipe != null && !recipe.isEmpty()) {
-                                recipeAdapter.submitList(recipe);
-                                isEmpty = false;
-                            } else {
-                                isEmpty = true;
-                            }
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (isEmpty) {
-                                        try {
-                                            binding.emptyState.getRoot().setVisibility(View.VISIBLE);
-                                            binding.rvRecipe.setVisibility(View.GONE);
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    } else {
-                                        try {
-                                            binding.emptyState.getRoot().setVisibility(View.GONE);
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }
-                            });
+                    executor.execute(() -> {
+                        if (recipe != null && !recipe.isEmpty()) {
+                            recipeAdapter.submitList(recipe);
+                            isEmpty = false;
+                        } else {
+                            isEmpty = true;
                         }
+                        handler.post(() -> {
+                            if (isEmpty) {
+                                try {
+                                    binding.emptyState.getRoot().setVisibility(View.VISIBLE);
+                                    binding.rvRecipe.setVisibility(View.GONE);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                try {
+                                    binding.emptyState.getRoot().setVisibility(View.GONE);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     });
 
                 }

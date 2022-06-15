@@ -169,13 +169,7 @@ public class DetailRecipeActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
             int count = detailVM.checkWish(idMain);
-            handler.post(() -> {
-                if (count > 0) {
-                    isSaved = true;
-                } else {
-                    isSaved = false;
-                }
-            });
+            handler.post(() -> isSaved = count > 0);
         });
 
     }
@@ -200,13 +194,20 @@ public class DetailRecipeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.detail_menu, menu);
-
-        if (isSaved) {
-            menu.getItem(0).setIcon(R.drawable.ic_bookmark_fill);
-        } else {
-            menu.getItem(0).setIcon(R.drawable.ic_bookmark_outline);
-        }
-
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+        executor.execute(() -> {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (isSaved) {
+                        menu.getItem(0).setIcon(R.drawable.ic_bookmark_fill);
+                    } else {
+                        menu.getItem(0).setIcon(R.drawable.ic_bookmark_outline);
+                    }
+                }
+            });
+        });
         return true;
     }
 
