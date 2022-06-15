@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -48,6 +49,24 @@ public class HomeFragment extends Fragment {
             recipeAdapter = new RecipeAdapter();
             getAllRecipe();
             sortData();
+
+            binding.cariResep.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String newText) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    if (newText.trim() != null && newText.trim().length() != 0) {
+                        searchRecipe(newText);
+                        return true;
+                    } else {
+                        getAllRecipe();
+                        return false;
+                    }
+                }
+            });
         }
     }
 
@@ -55,7 +74,7 @@ public class HomeFragment extends Fragment {
         binding.chipGroup.setOnCheckedChangeListener((group, checkedId) -> {
             Chip chip = group.findViewById(checkedId);
             String title = String.valueOf(chip.getText());
-            if (title!=null) {
+            if (title != null) {
                 switch (title) {
                     case "Semua":
                         getAllRecipe();
@@ -102,6 +121,35 @@ public class HomeFragment extends Fragment {
     private void getRecipeByCategories(String kategori) {
 
         homeVM.getRecipebyCategories(kategori).observe( requireActivity(), recipe -> {
+            if (recipe != null) {
+                switch (recipe.status) {
+                    case LOADING:
+                        binding.progressBar.setVisibility(View.VISIBLE);
+                        break;
+                    case SUCCESS:
+                        binding.progressBar.setVisibility(View.GONE);
+                        if (!recipe.data.isEmpty()) {
+                            binding.rvRecipe.setVisibility(View.VISIBLE);
+                            recipeAdapter.submitList(recipe.data);
+                        } else {
+                            binding.rvRecipe.setVisibility(View.GONE);
+                        }
+                        break;
+                    case ERROR:
+                        binding.progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+
+        binding.rvRecipe.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvRecipe.setHasFixedSize(true);
+        binding.rvRecipe.setAdapter(recipeAdapter);
+    }
+
+    private void searchRecipe(String name) {
+        homeVM.getRecipebyName(name).observe( requireActivity(), recipe ->{
             if (recipe != null) {
                 switch (recipe.status) {
                     case LOADING:

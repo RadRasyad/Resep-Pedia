@@ -238,4 +238,82 @@ public class RecipeRepository implements RecipeDataSource {
         }.asLiveData();
     }
 
+    public LiveData<Resource<PagedList<RecipeEntity>>> getRecipeByName(final String recipeName) {
+        return new NetworkBoundResource<PagedList<RecipeEntity>, List<RecipeResponse>>(appExecutors) {
+
+            @Override
+            protected LiveData<PagedList<RecipeEntity>> loadFromDB() {
+                PagedList.Config config = new PagedList.Config.Builder()
+                        .setEnablePlaceholders(false)
+                        .setPrefetchDistance(4)
+                        .setInitialLoadSizeHint(10)
+                        .setPageSize(10)
+                        .build();
+                return new LivePagedListBuilder<>(localDataSource.getAllRecipe(), config).build();
+            }
+
+            @Override
+            protected Boolean shouldFetch(PagedList<RecipeEntity> data) {
+                ExecutorService executor = Executors.newSingleThreadExecutor();
+                executor.execute(localDataSource::delLocalRecipe);
+                return true;
+            }
+
+            @Override
+            protected LiveData<ApiResponse<List<RecipeResponse>>> createCall() {
+                EspressoIdlingResource.increment();
+                List<RecipeResponse> recipeList = new ArrayList<>();
+                MutableLiveData<ApiResponse<List<RecipeResponse>>> resultData = new MutableLiveData<>();
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("Resep")
+                        .whereArrayContains("tag", recipeName)
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                recipeList.clear();
+                                for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                    Log.d("Data Resep", document.getId() + " => " + document.getData());
+
+                                    RecipeResponse recipe = document.toObject(RecipeResponse.class);
+                                    Log.d("Recipe ", String.valueOf(recipe));
+
+                                    recipeList.add(recipe);
+                                    Log.d("Objek Resep", String.valueOf(recipeList.size()));
+
+                                }
+                            } else {
+                                Log.w("Data Resep", "Error getting documents.", task.getException());
+                            }
+                            resultData.setValue(ApiResponse.success(recipeList));
+                            EspressoIdlingResource.decrement();
+                        });
+                return resultData;
+            }
+
+            @Override
+            protected void saveCallResult(List<RecipeResponse> data) {
+
+                ArrayList<RecipeEntity> courseList = new ArrayList<>();
+                for (RecipeResponse response : data) {
+                    RecipeEntity course = new RecipeEntity(
+                            response.getId(),
+                            response.getNama(),
+                            response.getPenulis(),
+                            response.getDitulis(),
+                            response.getWaktu(),
+                            response.getPorsi(),
+                            response.getKesulitan(),
+                            response.getKategori(),
+                            response.getDeskripsi(),
+                            response.getFoto(),
+                            response.getBahan(),
+                            response.getCara_masak());
+                    courseList.add(course);
+                }
+                localDataSource.insertRecipe(courseList);
+            }
+        }.asLiveData();
+    }
+
 }

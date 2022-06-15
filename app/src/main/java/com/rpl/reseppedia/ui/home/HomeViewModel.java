@@ -26,4 +26,7 @@ public class HomeViewModel extends ViewModel {
         return recipeRepository.getAllRecipeByCategories(kategori);
     }
 
+    public LiveData<Resource<PagedList<RecipeEntity>>> getRecipebyName(String name) {
+        return recipeRepository.getRecipeByName(name);
+    }
 }
