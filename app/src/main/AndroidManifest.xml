@@ -24,7 +24,7 @@
             android:exported="false"
             android:theme="@style/Theme.ResepPedia.NoActionBar" />
         <activity
-            android:name=".ui.detail.recipe.DetailRecipeActivity"
+            android:name=".ui.detail.DetailRecipeActivity"
             android:exported="false"
             android:theme="@style/Theme.ResepPedia.NoActionBar" />
         <activity

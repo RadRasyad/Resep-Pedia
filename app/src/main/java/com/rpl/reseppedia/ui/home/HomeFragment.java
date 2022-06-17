@@ -1,7 +1,6 @@
 package com.rpl.reseppedia.ui.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +20,6 @@ import com.rpl.reseppedia.databinding.FragmentHomeBinding;
 import com.rpl.reseppedia.ui.home.search.SearchFragment;
 import com.rpl.reseppedia.vm.ViewModelFactory;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
 

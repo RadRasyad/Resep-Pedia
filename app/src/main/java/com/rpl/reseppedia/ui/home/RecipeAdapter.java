@@ -2,7 +2,6 @@ package com.rpl.reseppedia.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.RecipeRowBinding;
 import com.rpl.reseppedia.source.local.entity.RecipeEntity;
-import com.rpl.reseppedia.ui.detail.recipe.DetailRecipeActivity;
+import com.rpl.reseppedia.ui.detail.DetailRecipeActivity;
 import com.squareup.picasso.Picasso;
 
 

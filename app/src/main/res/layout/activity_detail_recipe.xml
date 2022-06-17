@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_scrollFlags="noScroll"
-    tools:context=".ui.detail.recipe.DetailRecipeActivity">
+    tools:context=".ui.detail.DetailRecipeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:elevation="4dp">
@@ -15,7 +16,6 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="0dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.Toolbar
@@ -23,16 +23,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:fitsSystemWindows="false"
-                app:layout_collapseMode="pin"
-                app:menu="@menu/detail_menu"/>
+                app:layout_collapseMode="pin">
+
+                <ImageButton
+                    android:id="@+id/bookmark"
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="false"
+                    android:src="@drawable/ic_bookmark_outline" />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_img"
                 android:layout_width="match_parent"
                 android:layout_height="240dp"
-                android:elevation="0dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/placeholder_img" />
+                tools:src="@drawable/placeholder_img"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

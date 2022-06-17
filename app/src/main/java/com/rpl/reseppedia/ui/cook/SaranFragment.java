@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,8 +17,6 @@ public class SaranFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CookViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(CookViewModel.class);
 
         binding = FragmentSaranBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

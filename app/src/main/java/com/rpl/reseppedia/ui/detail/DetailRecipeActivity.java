@@ -1,4 +1,4 @@
-package com.rpl.reseppedia.ui.detail.recipe;
+package com.rpl.reseppedia.ui.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,9 +9,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.rpl.reseppedia.R;
@@ -65,6 +67,18 @@ public class DetailRecipeActivity extends AppCompatActivity {
             getExtraWish();
         }
 
+        try {
+            binding.bookmark.setBackground(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        binding.bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wishData();
+            }
+        });
+
     }
 
     public void getExtraData(String id) {
@@ -88,6 +102,7 @@ public class DetailRecipeActivity extends AppCompatActivity {
                 binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 binding.rvBahan.setHasFixedSize(true);
                 binding.rvBahan.setAdapter(iAdapter);
+                icBookmark();
             }
         });
 
@@ -138,6 +153,7 @@ public class DetailRecipeActivity extends AppCompatActivity {
                         binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         binding.rvBahan.setHasFixedSize(true);
                         binding.rvBahan.setAdapter(iAdapter);
+                        icBookmark();
                     }
                 });
 
@@ -169,7 +185,13 @@ public class DetailRecipeActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
             int count = detailVM.checkWish(idMain);
-            handler.post(() -> isSaved = count > 0);
+                        if (count > 0) {
+                            isSaved = true;
+                        } else {
+                            isSaved = false;
+                        }
+            Log.d("count", String.valueOf(count));
+            Log.d("bookmarkCheck", String.valueOf(isSaved));
         });
 
     }
@@ -187,37 +209,25 @@ public class DetailRecipeActivity extends AppCompatActivity {
                 isSaved = true;
             }
             checkWishData();
+            icBookmark();
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.detail_menu, menu);
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-        executor.execute(() -> {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (isSaved) {
-                        menu.getItem(0).setIcon(R.drawable.ic_bookmark_fill);
-                    } else {
-                        menu.getItem(0).setIcon(R.drawable.ic_bookmark_outline);
-                    }
-                }
-            });
-        });
-        return true;
+    public void icBookmark() {
+        Log.d("iconState", String.valueOf(isSaved));
+        if (isSaved) {
+            binding.bookmark.setImageResource(R.drawable.ic_bookmark_fill);
+        } else {
+            binding.bookmark.setImageResource(R.drawable.ic_bookmark_outline);
+        }
+
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //home untuk back button
-        if (item.getItemId() == R.id.menu_wish) {
-            wishData();
-            return true;
-        } else if (item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
         }
