@@ -154,10 +154,10 @@ public class HomeFragment extends Fragment {
                         if (!recipe.data.isEmpty()) {
                             try {
                                 binding.progressBar.setVisibility(View.GONE);
+                                binding.rvRecipe.setVisibility(View.VISIBLE);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            binding.rvRecipe.setVisibility(View.VISIBLE);
                             recipeAdapter.submitList(recipe.data);
                         } else {
                             try {
