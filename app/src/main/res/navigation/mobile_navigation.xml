@@ -12,15 +12,15 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_cook"
-        android:name="com.rpl.reseppedia.ui.cook.CookFragment"
-        android:label="@string/title_cook"
-        tools:layout="@layout/fragment_cook" />
-
-    <fragment
         android:id="@+id/navigation_wishlist"
         android:name="com.rpl.reseppedia.ui.wishlist.WishlistFragment"
         android:label="@string/title_wishlist"
         tools:layout="@layout/fragment_wishlist" />
+
+    <fragment
+        android:id="@+id/navigation_saran"
+        android:name="com.rpl.reseppedia.ui.cook.SaranFragment"
+        android:label="@string/title_cook"
+        tools:layout="@layout/fragment_saran" />
 
 </navigation>

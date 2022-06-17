@@ -11,11 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.android.material.chip.Chip;
+import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.FragmentHomeBinding;
+import com.rpl.reseppedia.ui.home.search.SearchFragment;
 import com.rpl.reseppedia.vm.ViewModelFactory;
 
 import java.util.concurrent.ExecutorService;
@@ -53,13 +56,26 @@ public class HomeFragment extends Fragment {
             binding.cariResep.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String newText) {
+                    SearchFragment searchFragment = new SearchFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(SearchFragment.EXTRA_SEARCH, newText);
+
+                    searchFragment.setArguments(bundle);
+
+                    FragmentManager mFragmentManager = getParentFragmentManager();
+                    mFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.nav_host_fragment_activity_main, searchFragment, SearchFragment.class.getSimpleName())
+                            .addToBackStack(null)
+                            .commit();
+
                     return false;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     if (newText.trim() != null && newText.trim().length() != 0) {
-                        searchRecipe(newText);
                         return true;
                     } else {
                         getAllRecipe();

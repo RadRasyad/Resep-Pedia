@@ -273,14 +273,9 @@ public class RecipeRepository implements RecipeDataSource {
                             if (task.isSuccessful()) {
                                 recipeList.clear();
                                 for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                                    Log.d("Data Resep", document.getId() + " => " + document.getData());
 
                                     RecipeResponse recipe = document.toObject(RecipeResponse.class);
-                                    Log.d("Recipe ", String.valueOf(recipe));
-
                                     recipeList.add(recipe);
-                                    Log.d("Objek Resep", String.valueOf(recipeList.size()));
-
                                 }
                             } else {
                                 Log.w("Data Resep", "Error getting documents.", task.getException());

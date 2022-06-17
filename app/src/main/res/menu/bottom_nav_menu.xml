@@ -8,13 +8,13 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_cook"
-        android:icon="@drawable/nav_cook_selector"
-        android:title="@string/title_cook" />
-
-    <item
         android:id="@+id/navigation_wishlist"
         android:icon="@drawable/nav_heart_selector"
         android:title="@string/title_wishlist" />
+
+    <item
+        android:id="@+id/navigation_saran"
+        android:icon="@drawable/nav_cook_selector"
+        android:title="@string/title_saran" />
 
 </menu>

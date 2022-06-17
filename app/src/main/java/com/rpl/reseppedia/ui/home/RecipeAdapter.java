@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 
 public class RecipeAdapter extends PagedListAdapter<RecipeEntity, RecipeAdapter.RecipeViewHolder> {
 
-    RecipeAdapter() {
+    public RecipeAdapter() {
         super(DIFF_CALLBACK);
     }
 

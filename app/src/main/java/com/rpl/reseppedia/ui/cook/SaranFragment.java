@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.rpl.reseppedia.databinding.FragmentCookBinding;
+import com.rpl.reseppedia.databinding.FragmentSaranBinding;
 
-public class CookFragment extends Fragment {
+public class SaranFragment extends Fragment {
 
-    private FragmentCookBinding binding;
+    private FragmentSaranBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         CookViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(CookViewModel.class);
 
-        binding = FragmentCookBinding.inflate(inflater, container, false);
+        binding = FragmentSaranBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;
