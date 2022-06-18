@@ -1,4 +1,4 @@
-package com.rpl.reseppedia.ui.cook;
+package com.rpl.reseppedia.ui.saran;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

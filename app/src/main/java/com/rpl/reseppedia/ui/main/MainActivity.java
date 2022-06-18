@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         checkedItem = 2;
                     }
                 })
-                .setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.cancel())
+                .setNegativeButton("Batal", (dialogInterface, i) -> dialogInterface.cancel())
                 .setPositiveButton("OK", (dialogInterface, i) -> {
                     if (checkedItem == 0) {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);

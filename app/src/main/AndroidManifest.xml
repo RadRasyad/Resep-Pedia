@@ -14,10 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResepPedia">
         <activity
-            android:name=".activity_deskripsi"
-            android:exported="false" />
-        <activity
-            android:name=".activity_saran"
+            android:name=".ui.saran.SaranActivity"
             android:exported="false" />
         <activity
             android:name=".ui.onboarding.on_board"

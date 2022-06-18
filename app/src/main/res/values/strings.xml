@@ -29,7 +29,9 @@
     <string name="namaResep">Nama Resep</string>
     <string name="waktuMasak">Waktu Memasak</string>
     <string name="porsi">Porsi</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="title_saran">Saran</string>
+
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
 </resources>

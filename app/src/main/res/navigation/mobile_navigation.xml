@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_saran"
-        android:name="com.rpl.reseppedia.ui.cook.SaranFragment"
+        android:name="com.rpl.reseppedia.ui.saran.SaranFragment"
         android:label="@string/title_cook"
         tools:layout="@layout/fragment_saran" />
 

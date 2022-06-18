@@ -24,4 +24,8 @@
         <item name="android:background">@color/black</item>
     </style>
 
+    <style name="Theme.ResepPedia.CTextField">
+        <item name="android:backgroundTint">@color/black</item>
+    </style>
+
 </resources>
