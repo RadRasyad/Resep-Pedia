@@ -15,6 +15,8 @@ import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.ui.saran.input.FirstInputFragment;
 import com.rpl.reseppedia.vo.Resource;
 
+import java.util.Objects;
+
 public class SaranActivity extends AppCompatActivity {
 
     @Override
@@ -33,6 +35,7 @@ public class SaranActivity extends AppCompatActivity {
                     .commit();
         }
 
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Saran Resep");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }

@@ -8,7 +8,6 @@
     <string name="title_wishlist">Wishlist</string>
     <string name="placeholder_nama_resep">Nama Resep</string>
 
-
     <string-array name="Title">
         <item>Pelajari Cara Memasak</item>
         <item>Temukan Resep Pilihamu</item>
@@ -20,7 +19,6 @@
         <item>@drawable/on_boarding_img2</item>
         <item>@drawable/on_boarding_img3</item>
     </integer-array>
-
 
     <string name="placeholder_desk">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt lorem sed odio laoreet, id dictum mauris auctor. Vestibulum lobortis rhoncus magna,vitae cursus tortor vehicula id.</string>
     <string name="berhasil_simpan">Berhasil disimpan</string>

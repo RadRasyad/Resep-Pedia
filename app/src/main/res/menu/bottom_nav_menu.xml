@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/nav_home_selector"
@@ -14,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_saran"
-        android:icon="@drawable/nav_cook_selector"
+        android:icon="@drawable/nav_saran_selector"
         android:title="@string/title_saran" />
 
 </menu>
