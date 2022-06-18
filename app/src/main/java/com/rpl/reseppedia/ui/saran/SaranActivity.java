@@ -37,6 +37,7 @@ public class SaranActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    /*
     private void dialog() {
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
 
@@ -53,13 +54,13 @@ public class SaranActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         dialog();
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == android.R.id.home) {
-            dialog();
+            finish();
             return true;
         }
         return true;

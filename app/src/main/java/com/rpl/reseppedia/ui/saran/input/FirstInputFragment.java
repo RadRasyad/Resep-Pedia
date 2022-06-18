@@ -7,10 +7,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.FragmentFirstInputBinding;
 
@@ -32,7 +35,10 @@ public class FirstInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        binding.inputNamaResep.addTextChangedListener(inputTextWatcher);
+        binding.inputNamaPenulis.addTextChangedListener(inputTextWatcher);
+        binding.inputWaktu.addTextChangedListener(inputTextWatcher);
+        binding.inputPorsi.addTextChangedListener(inputTextWatcher);
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +67,37 @@ public class FirstInputFragment extends Fragment {
         });
 
     }
+
+    private TextWatcher inputTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String resep, penulis, waktu, porsi;
+            resep = binding.inputNamaResep.getText().toString().trim();
+            penulis = binding.inputNamaPenulis.getText().toString().trim();
+            waktu = binding.inputWaktu.getText().toString().trim();
+            porsi = binding.inputPorsi.getText().toString().trim();
+
+            boolean state;
+            if (!resep.isEmpty() && !penulis.isEmpty() && !waktu.isEmpty() && !porsi.isEmpty()) {
+                state = true;
+            } else {
+                state = false;
+            }
+            binding.btnNext.setEnabled(state);
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+
 
     @Override
     public void onDestroyView() {

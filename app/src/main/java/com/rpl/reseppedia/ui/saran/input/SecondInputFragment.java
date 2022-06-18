@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ public class SecondInputFragment extends Fragment {
     public String penulis;
     public String porsi;
     public String waktu;
+    public String deskripsi;
 
     public String getPenulis() {
         return penulis;
@@ -50,8 +53,6 @@ public class SecondInputFragment extends Fragment {
     public void setWaktu(String waktu) {
         this.waktu = waktu;
     }
-
-
 
 
     public SecondInputFragment() {
@@ -80,22 +81,63 @@ public class SecondInputFragment extends Fragment {
 
         if (getArguments() != null) {
             String namaResep = getArguments().getString(EXTRA_NAMARESEP);
+
+            binding.inputDeskripsi.addTextChangedListener(inputTextWatcher);
+            binding.btnNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ThirdInputFragment tiFragment = new ThirdInputFragment();
+                    Bundle mBundle = new Bundle();
+                    mBundle.putString(SecondInputFragment.EXTRA_NAMARESEP, namaResep);
+                    String penulis, waktu, porsi;
+                    penulis = getPenulis();
+                    waktu = getWaktu();
+                    porsi = getPorsi();
+                    deskripsi = binding.inputDeskripsi.getText().toString();
+
+                    tiFragment.setArguments(mBundle);
+                    tiFragment.setPenulis(penulis);
+                    tiFragment.setPorsi(porsi);
+                    tiFragment.setWaktu(waktu);
+                    tiFragment.setDeskripsi(deskripsi);
+
+                    FragmentManager mFragmentManager = getParentFragmentManager();
+
+                    mFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.frame_container, tiFragment, ThirdInputFragment.class.getSimpleName())
+                            .addToBackStack(null)
+                            .commit();
+                }
+            });
+        }
+    }
+
+    private TextWatcher inputTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
         }
 
-        binding.btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ThirdInputFragment siFragment = new ThirdInputFragment();
-                FragmentManager mFragmentManager = getParentFragmentManager();
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String deskripsi;
+            deskripsi = binding.inputDeskripsi.getText().toString().trim();
 
-                mFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.frame_container, siFragment, ThirdInputFragment.class.getSimpleName())
-                        .addToBackStack(null)
-                        .commit();
+            boolean state;
+            if (!deskripsi.isEmpty()) {
+                state = true;
+            } else {
+                state = false;
             }
-        });
-    }
+            binding.btnNext.setEnabled(state);
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
