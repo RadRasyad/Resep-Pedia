@@ -16,8 +16,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     private final List<String> bahan;
 
-    public IngredientsAdapter(ArrayList<String> ulasan) {
-        bahan = ulasan;
+    public IngredientsAdapter(ArrayList<String> bahan) {
+        this.bahan = bahan;
     }
 
     @NonNull
@@ -32,8 +32,6 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         String dBahan = bahan.get(position);
 
         holder.bahan.setText(dBahan);
-        //int index = holder.getBindingAdapterPosition();
-        //holder.bahan.setText(dBahan+" index-"+(index+1));
 
     }
 

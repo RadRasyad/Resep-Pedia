@@ -102,6 +102,11 @@ public class DetailRecipeActivity extends AppCompatActivity {
                 binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 binding.rvBahan.setHasFixedSize(true);
                 binding.rvBahan.setAdapter(iAdapter);
+
+                StepAdapter stepAdapter = new StepAdapter(data.getCaraMasak());
+                binding.rvLangkah.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                binding.rvLangkah.setHasFixedSize(true);
+                binding.rvLangkah.setAdapter(stepAdapter);
                 icBookmark();
             }
         });
@@ -153,6 +158,11 @@ public class DetailRecipeActivity extends AppCompatActivity {
                         binding.rvBahan.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         binding.rvBahan.setHasFixedSize(true);
                         binding.rvBahan.setAdapter(iAdapter);
+
+                        StepAdapter stepAdapter = new StepAdapter(data.getCaraMasak());
+                        binding.rvLangkah.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        binding.rvLangkah.setHasFixedSize(true);
+                        binding.rvLangkah.setAdapter(stepAdapter);
                         icBookmark();
                     }
                 });
@@ -182,7 +192,6 @@ public class DetailRecipeActivity extends AppCompatActivity {
 
     public void checkWishData() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
             int count = detailVM.checkWish(idMain);
                         if (count > 0) {
@@ -190,8 +199,6 @@ public class DetailRecipeActivity extends AppCompatActivity {
                         } else {
                             isSaved = false;
                         }
-            Log.d("count", String.valueOf(count));
-            Log.d("bookmarkCheck", String.valueOf(isSaved));
         });
 
     }
@@ -214,7 +221,6 @@ public class DetailRecipeActivity extends AppCompatActivity {
     }
 
     public void icBookmark() {
-        Log.d("iconState", String.valueOf(isSaved));
         if (isSaved) {
             binding.bookmark.setImageResource(R.drawable.ic_bookmark_fill);
         } else {

@@ -184,19 +184,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/label_bahan"
                 tools:listitem="@layout/row_bahan" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_masak"
+            <TextView
+                android:id="@+id/label_langkah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Cara Pembuatan :"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_bahan" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_langkah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="12dp"
-                android:layout_marginHorizontal="48dp"
-                android:layout_marginVertical="32dp"
-                android:text="Masak"
-                app:cornerRadius="20dp"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_bahan" />
+                android:isScrollContainer="false"
+                android:padding="8dp"
+                android:scrollbars="none"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/label_langkah"
+                tools:layout_editor_absoluteX="16dp"
+                tools:listitem="@layout/row_langkah" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
