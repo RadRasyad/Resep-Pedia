@@ -19,6 +19,40 @@ import com.rpl.reseppedia.databinding.FragmentSecondInputBinding;
 public class SecondInputFragment extends Fragment {
 
     private FragmentSecondInputBinding binding;
+    public static final String EXTRA_NAMARESEP = "extra_namaresep";
+    public static final String EXTRA_PENULIS = "extra_penulis";
+    public static final String EXTRA_WAKTU = "extra_waktu";
+    public static final String EXTRA_PORSI = "extra_porsi";
+    public String penulis;
+    public String porsi;
+    public String waktu;
+
+    public String getPenulis() {
+        return penulis;
+    }
+
+    public void setPenulis(String penulis) {
+        this.penulis = penulis;
+    }
+
+    public String getPorsi() {
+        return porsi;
+    }
+
+    public void setPorsi(String porsi) {
+        this.porsi = porsi;
+    }
+
+    public String getWaktu() {
+        return waktu;
+    }
+
+    public void setWaktu(String waktu) {
+        this.waktu = waktu;
+    }
+
+
+
 
     public SecondInputFragment() {
 
@@ -35,6 +69,19 @@ public class SecondInputFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if (savedInstanceState != null) {
+            String penulis = savedInstanceState.getString(EXTRA_PENULIS);
+            String porsi = savedInstanceState.getString(EXTRA_PORSI);
+            String waktu = savedInstanceState.getString(EXTRA_WAKTU);
+            setPenulis(penulis);
+            setPorsi(porsi);
+            setWaktu(waktu);
+        }
+
+        if (getArguments() != null) {
+            String namaResep = getArguments().getString(EXTRA_NAMARESEP);
+        }
+
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,6 +95,16 @@ public class SecondInputFragment extends Fragment {
                         .commit();
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(EXTRA_PENULIS, getPenulis());
+        outState.putString(EXTRA_PORSI, getPorsi());
+        outState.putString(EXTRA_WAKTU, getWaktu());
+
     }
 
     @Override

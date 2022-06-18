@@ -15,7 +15,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="32dp"
-        app:startIconDrawable="@drawable/ic_bookmark_fill">
+        app:startIconDrawable="@drawable/ic_deskresep"
+        app:startIconTint="@color/primaryColor">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputDeskripsi"

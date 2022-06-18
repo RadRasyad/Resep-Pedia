@@ -36,7 +36,20 @@ public class FirstInputFragment extends Fragment {
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Bundle mBundle = new Bundle();
+                mBundle.putString(SecondInputFragment.EXTRA_NAMARESEP, binding.inputNamaResep.getText().toString());
+                String penulis, waktu, porsi;
+                penulis = binding.inputNamaPenulis.getText().toString();
+                waktu = binding.inputWaktu.getText().toString();
+                porsi = binding.inputPorsi.getText().toString();
+
                 SecondInputFragment siFragment = new SecondInputFragment();
+                siFragment.setArguments(mBundle);
+                siFragment.setPenulis(penulis);
+                siFragment.setPorsi(porsi);
+                siFragment.setWaktu(waktu);
+
                 FragmentManager mFragmentManager = getParentFragmentManager();
 
                 mFragmentManager

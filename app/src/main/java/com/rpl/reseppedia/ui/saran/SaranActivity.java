@@ -52,7 +52,6 @@ public class SaranActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         dialog();
     }
 
