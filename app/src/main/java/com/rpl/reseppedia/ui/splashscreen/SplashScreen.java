@@ -12,9 +12,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.rpl.reseppedia.databinding.ActivitySplashScreenBinding;
-import com.rpl.reseppedia.ui.main.MainActivity;
 import com.rpl.reseppedia.ui.main.MainViewModel;
-import com.rpl.reseppedia.ui.onboarding.on_board;
+import com.rpl.reseppedia.ui.onboarding.OnBoardingactivity;
 import com.rpl.reseppedia.utils.SettingPreferences;
 import com.rpl.reseppedia.vm.SettingViewModelFactory;
 
@@ -43,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
 
         int time = 3000;
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(SplashScreen.this, on_board.class);
+            Intent intent = new Intent(SplashScreen.this, OnBoardingactivity.class);
             startActivity(intent);
             finish();
         }, time);

@@ -17,7 +17,7 @@
             android:name=".ui.saran.SaranActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.onboarding.on_board"
+            android:name=".ui.onboarding.OnBoardingactivity"
             android:exported="false"
             android:theme="@style/Theme.ResepPedia.NoActionBar" />
         <activity

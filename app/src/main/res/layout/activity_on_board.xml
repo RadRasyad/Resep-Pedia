@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="480dp"
         android:src="@drawable/on_boarding_bg"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -51,8 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="4dp"
-        android:layout_marginBottom="88dp" >
-    </androidx.viewpager2.widget.ViewPager2>
+        android:layout_marginBottom="88dp" />
 
     <LinearLayout
         android:id="@+id/lyt_obrd_indctr"

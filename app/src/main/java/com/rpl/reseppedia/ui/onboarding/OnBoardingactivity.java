@@ -16,12 +16,11 @@ import android.widget.LinearLayout;
 
 import com.rpl.reseppedia.R;
 import com.rpl.reseppedia.databinding.ActivityOnBoardBinding;
-import com.rpl.reseppedia.databinding.OnBoardingRowBinding;
 import com.rpl.reseppedia.ui.main.MainActivity;
 
 import java.util.ArrayList;
 
-public class on_board extends AppCompatActivity {
+public class OnBoardingactivity extends AppCompatActivity {
 
     private ActivityOnBoardBinding binding;
     private final ArrayList<obEntity> listBoarding = new ArrayList<>();
@@ -80,7 +79,7 @@ public class on_board extends AppCompatActivity {
                 editor.putBoolean("firstTime", false);
                 editor.apply();
 
-                Intent intent = new Intent(on_board.this, MainActivity.class);
+                Intent intent = new Intent(OnBoardingactivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -91,7 +90,7 @@ public class on_board extends AppCompatActivity {
         boolean firstime = firstTimeState.getBoolean("firstTime", true);
 
         if (!firstime) {
-            Intent intent = new Intent(on_board.this, MainActivity.class);
+            Intent intent = new Intent(OnBoardingactivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }

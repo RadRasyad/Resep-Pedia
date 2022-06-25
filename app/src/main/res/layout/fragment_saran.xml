@@ -6,6 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.saran.SaranFragment">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:src="@drawable/illustration_suggest"
+        app:layout_constraintBottom_toTopOf="@+id/inputSaran"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:text="Bagikan Resep Andalan Kamu!"
+        android:textAlignment="center"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/inputSaran"
         android:layout_width="match_parent"
@@ -13,7 +36,7 @@
         android:layout_marginBottom="64dp"
         android:layout_marginHorizontal="64dp"
         android:paddingVertical="4dp"
-        android:text="Kirim Saran"
+        android:text="Kirim Saran Resep"
         android:textSize="16sp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
